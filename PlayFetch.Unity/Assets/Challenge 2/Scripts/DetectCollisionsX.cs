@@ -7,6 +7,18 @@ public class DetectCollisionsX : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        var otherIsGround = other.gameObject.name == "Ground";
+        var otherIsDog = other.gameObject.name.Contains("Dog");
+
+        Debug.Log($"Colliding with {other.gameObject.name}");
+
+        if (otherIsGround)
+        {
+            Debug.Log("Game over");
+        }
+        else if (otherIsDog)
+        {
+            Destroy(gameObject);
+        }
     }
 }
